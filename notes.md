@@ -20,10 +20,10 @@ courses/ud303
 ```
 
 #### nmap
-- `nmap` is a command line based application for network analysis and testing. https://nmap.org/
+- `nmap` is a command line based application for network analysis and testing.
 - Installation on Linux through `sudo apt install nmap`
 - `ncat` is a part of the `nmap` toolkit which can be used to create simple servers and clients below the HTTP layer.
-- The network layer below HTTP is called TCP - Transmission Control Protocol. https://en.wikipedia.org/wiki/Transmission_Control_Protocol
+- The network layer below HTTP is called TCP - Transmission Control Protocol.
 - We can use `ncat` to create a simple "send and receive" cycle between a basic server and a client. For example:
 
 Open terminal and create a server at port 9999 and start listening for connections
@@ -36,6 +36,13 @@ ncat localhost 9999
 ```
 Since a connection is established, typing anything in each terminal will lead to the text being sent back and forth between the "server" and the "client"
 
+---
+
+#### Helpful Links
+- https://docs.python.org/3/library/urllib.html
+- https://docs.python.org/3/library/urllib.parse.html#module-urllib.parse
+- https://nmap.org/
+- https://en.wikipedia.org/wiki/Transmission_Control_Protocol
 
 ### Module: Your First Web Server
 
