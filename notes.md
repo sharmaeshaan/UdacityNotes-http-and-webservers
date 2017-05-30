@@ -47,7 +47,7 @@ Since a connection is established, typing anything in each terminal will lead to
 ### Module: Your First Web Server
 
 - A server is basically a program which waits for other programs to connect to it.
-- Akin to a phone conversation, when a program gets connected to a server, a series of requests and responses beigns.
+- Akin to a phone conversation between two people, when a program connects to a server, a series of requests and responses beigns.
 - The program connecting to a server and requesting it for data is called a "client".
 - For every "request" that a client sends it, the server sends back a "response" containing the requested data.
 - This "transaction" between the client and the server is called a "request-response cycle" and takes place within a set of rules, or a protocol, called HTTP.
