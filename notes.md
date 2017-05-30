@@ -13,7 +13,7 @@
 The `urllib` library in Python can parse components of a URL. For example:
 
 ```python
->>> from urllib.parse imort urlparse
+>>> from urllib.parse import urlparse
 >>> var = urlparse('https://classroom.udacity.com/courses/ud303').path
 >>> print(var)
 courses/ud303
