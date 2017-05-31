@@ -42,6 +42,7 @@ Since a connection is established, typing anything in each terminal will lead to
 - https://docs.python.org/3/library/urllib.parse.html#module-urllib.parse
 - https://nmap.org/
 - https://en.wikipedia.org/wiki/Transmission_Control_Protocol
+---
 
 ### Module 2: Your First Web Server
 
@@ -89,21 +90,32 @@ For example, instead of `8000` setting the port to `8464` with the statement `py
 - https://docs.python.org/3/library/http.html
 - https://docs.python.org/3/library/http.server.html#module-http.server
 - https://stackoverflow.com/questions/2200199/how-do-you-decide-what-port-to-use
-
+---
 
 ### Module 3: Parts of a URL
 
 
-
+---
+#### Helpful Links
+---
 
 ### Module 4: Hostnames and Ports
 
 
-
+---
+#### Helpful Links
+---
 
 ### Module 5: HTTP GET Requests
 
 
-
+---
+#### Helpful Links
+---
 
 ### Module 6: HTTP Responses
+
+
+---
+#### Helpful Links
+---
