@@ -3,7 +3,7 @@
 ## Lesson: Requests and Responses
 **Instructor: Karl Krueger**
 
-### Module: Introduction
+### Module 1: Introduction
 
 #### HTTP
 - HTTP: Hyper Text Transfer/Transport Protocol
@@ -37,14 +37,13 @@ ncat localhost 9999
 Since a connection is established, typing anything in each terminal will lead to the text being sent back and forth between the "server" and the "client"
 
 ---
-
 #### Helpful Links
 - https://docs.python.org/3/library/urllib.html
 - https://docs.python.org/3/library/urllib.parse.html#module-urllib.parse
 - https://nmap.org/
 - https://en.wikipedia.org/wiki/Transmission_Control_Protocol
 
-### Module: Your First Web Server
+### Module 2: Your First Web Server
 
 - A server is basically a program which waits for other programs to connect to it.
 - Akin to a phone conversation between two people, when a program connects to a server, a series of requests and responses beigns.
@@ -86,51 +85,25 @@ We can set the server to whatever port number we want as long as the port number
 For example, instead of `8000` setting the port to `8464` with the statement `python -m http.server 8464` will also work just fine, which can then be accessed at `http://localhost:8464`
 
 ---
-
 #### Helpful Links
 - https://docs.python.org/3/library/http.html
 - https://docs.python.org/3/library/http.server.html#module-http.server
 - https://stackoverflow.com/questions/2200199/how-do-you-decide-what-port-to-use
 
 
-### Module: Parts of a URL
+### Module 3: Parts of a URL
 
 
 
 
-### Module: Hostnames and Ports
+### Module 4: Hostnames and Ports
 
 
 
 
-### Module: HTTP GET Requests
+### Module 5: HTTP GET Requests
 
 
 
 
-### Module: HTTP Responses
-
-## Lesson:
-**Instructor: **
-
-### Module:
-
-
-
-### Module:
-
-
-
-### Module:
-
-
-
-### Module:
-
-
-
-### Module:
-
-
-
-### Module:
+### Module 6: HTTP Responses
