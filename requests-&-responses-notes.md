@@ -108,14 +108,14 @@ For example, instead of `8000` setting the port to `8464` with the statement `py
 https://en.wikipedia.org/wiki/Prague
 `https` is the scheme `en.wikipedia.org` is the hostname of the server and `wiki/Prague` is the directory path.
 
-####scheme
+#### scheme
 - A scheme is the is the protocol which tells the cilent i.e. the brower what protocol to follow when accessing the resource at the given url
 - `https` and `http` are the most used schemes when accessing webpages... `file` is used when accessing resources on our own computer through the browser... `mailto` for links to email addresses... Google Chrome uses 'chrome' when accessing it's internal pages like settings and extensions... The scheme for bitcoin transactions is `bitcoin`...
 - There are hundreds of URI schemes the list of which can be found at https://www.iana.org/assignments/uri-schemes/uri-schemes.xhtml
 
 - *The primary difference between `http` and `https` is that of encryption. All requests and responses happening within a `https` protocol are encrypted while those within `http` are not*
 
-####hostname
+#### hostname
 - A hostname is a unique identifier for which tells the client which server to connect to. For example `localhost` or `www.wikipedia.com'
 - A `:` always comes after the scheme
 - A `//` always comes before a hostname and a single '/' immediately after it to indicate the beginning of a path
@@ -216,9 +216,65 @@ When we run a server on our computer it gets the hostname `localhost` with the I
 
 ### Module 5: HTTP GET Requests
 
+There are different kinds of HTTP requests. Every request has a "method" or "verb" depending on what the client has requested from the server. The different types of HTTP methods are:
+- `GET`
+- `POST`
+- `PUT`
+- `PATCH`
+- `DELETE`
+
+#### `GET`
+
+- The most commonly used HTTP method on the internet is `GET`.
+- `GET` is used when a client requests a server to send over a copy of a resource, like a full webpage or image or video or results of a search query.
+
+#### Typical `GET` Request
+
+If we initialize a Python server in a local directory, go to it's IP address from the browser and click on any file or folder, we should see something like this in the open terminal window:
+
+```
+127.0.0.1 - - [01/Jun/2017 23:16:11] "GET /readme.md HTTP/1.1" 200 -
+```
+The above statement is a typical `GET` request made by a client. It's can be broken down into:
+- `127.0.0.1`: The server IP address
+- `[01/Jun/2017 23:16:11]`: Timestamp of the request
+- `GET`: The HTTP request method
+- `/readme.md`: Path of the requested resource, which in this case is a readme file
+- `HTTP/1.1`: The protocol in use for the request and response. `1.1` is the version number of the protocol.
+
+#### Manually Writing `GET` Request
+
+The above example illustrated how a client automatically makes `GET` requests for us while we click and open resources. We can also write HTTP requests and get resources from a server manually using `ncat`, a tool in the `nmap` network analysis program.
+
+Open terminal and start a server at port 8000
+```
+python -m http.server 8000
+```
+Open another terminal and start a connection to the server with `ncat`
+```
+ncat 127.0.0.1 8000
+```
+Once started, enter a `GET` request for any file or resource in the server directory and press `Enter` twice
+```
+GET /readme.txt HTTP/1.1
+Host: localhost
+```
+We should get a response back from the server which looks like this:
+```
+HTTP/1.0 200 OK
+Server: SimpleHTTP/0.6 Python/3.6.1
+Date: Thu, 01 Jun 2017 18:11:53 GMT
+Content-type: application/octet-stream
+Content-Length: 1099
+Last-Modified: Thu, 01 Jun 2017 10:02:22 GMT
+
+Course notes jotted down while taking the ["HTTP & Web Servers"](https://www.udacity.com/course/http-web-servers--ud303) course on [Udacity](https://www.udacity.com/).
+```
 
 ---
 #### Helpful Links
+- http://www8.org/w8-papers/5c-protocols/key/key.html
+- https://en.wikipedia.org/wiki/HTTP/2
 ---
 
 
