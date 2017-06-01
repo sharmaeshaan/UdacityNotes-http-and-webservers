@@ -152,10 +152,67 @@ A URL reference is indicated by a `#` called a "fragment". URLs with fragments i
 
 ### Module 4: Hostnames and Ports
 
+- A "host" is a computer on the network which hosts a service that clients can connect to
+- Every host has a unique hostname and every hostname has a unique IP address
+- The hostname in a url tells the browser which server it should connect to
+- Whenever we type an address into our browser, it translates the hostname to an IP address of the server and the port number on which the website or resource is located (somewhat similar to `localhost:8000`).
+- A port number is essential to identify exactly which website you want to land up on since a single server could be serving up different services on different ports
+- The mapping of hostnames with their IP addresses is maintained on DNS (Domain Name Service) servers by ISPs (Internet Service Providers)
+
+#### `host` and `nslookup`
+
+`host` and `nslookup` are programs which help us find out the network information related to a hostname. They can be especially helpful in finding out IP addresses. For example:
+
+Open terminal and find out IP address of www.facebook.com with `host`
+
+```
+host www.google.com
+```
+```
+www.facebook.com is an alias for star-mini.c10r.facebook.com.
+star-mini.c10r.facebook.com has address 157.240.13.35
+star-mini.c10r.facebook.com has IPv6 address 2a03:2880:f126:83:face:b00c:0:25de
+```
+
+Open terminal and find out IP address of www.facebook.com with `nslookup`
+
+```
+nslookup www.faceook.com
+```
+```
+Non-authoritative answer:
+www.facebook.com	canonical name = star-mini.c10r.facebook.com.
+Name:	star-mini.c10r.facebook.com
+Address: 157.240.13.35
+```
+
+#### IPv4 and IPv6
+IPv4 is the older convention of IP addresses where a typical IP address is a 32-bit string and looks like `157.240.13.35`
+
+IPv6 is the newer convention in which IP addresses are much longer 128-bit strings and typically look like `2404:6800:4009:806::200e`
+
+The need for IPv6 arose when the internet started bursting at it's seams and started running out of unique number combinations for IP addresses. The longer, more complex IPv6 convention allows for a substantially larger pool of IP addresses, each with a unique number combination.
+
+#### `localhost`
+
+When we run a server on our computer it gets the hostname `localhost` with the IP address `127.0.0.1`, specifically, IPv4 address `127.0.0.1` and IPv6 address `::1`
+
+#### Ports
+
+- An IP address uniquely identifies a computer on a network. A **port** uniquely identifies a program on that computer.
+- We don't need to mention the port number when visiting a website from our browser, because the browser can automatically interpret which port to send the request to based on the URL scheme.
+    - `http` uses port number `80` and `https` uses port number `443` by default.
+- When initiating a server locally, usually port number 8000 is used. `http://localhost:80` won't work since operating systems only allow the administrator / root account to use port numbers below `1024`.
 
 ---
 #### Helpful Links
+- https://www.quora.com/What-is-the-difference-between-host-and-server-in-terms-of-computer-networking
+- http://mashable.com/2011/02/03/ipv4-ipv6-guide/#MDWZsJl18Oqw
+- https://en.wikipedia.org/wiki/Port_(computer_networking)#Common_port_numbers
+- https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers
+
 ---
+
 
 ### Module 5: HTTP GET Requests
 
@@ -163,6 +220,11 @@ A URL reference is indicated by a `#` called a "fragment". URLs with fragments i
 ---
 #### Helpful Links
 ---
+
+
+
+
+
 
 ### Module 6: HTTP Responses
 
