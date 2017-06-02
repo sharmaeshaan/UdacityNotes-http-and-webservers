@@ -1,9 +1,7 @@
-# Course: HTTP and Web Servers
+# [Course: HTTP and Web Servers](https://www.udacity.com/course/http-web-servers--ud303)
 
 ## Lesson: Requests and Responses
-**Instructor: Karl Krueger**
-
-
+[**Instructor: Karl Krueger**](https://www.linkedin.com/in/karl-krueger-762857132)
 
 ### Module 1: Introduction
 
