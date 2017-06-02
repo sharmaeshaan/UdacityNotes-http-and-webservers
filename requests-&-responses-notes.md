@@ -158,11 +158,9 @@ For example, instead of `8000` setting the port to `8464` with the statement `py
 
 ### Module 4: Hostnames and Ports
 
-- A "host" is a computer on the network which hosts a service that clients can connect to
+- A "host" is a computer on the network which other computers can connect to.
 - Every host has a unique hostname and every hostname has a unique IP address
-- The hostname in a url tells the browser which server it should connect to
-- Whenever we type an address into our browser, it translates the hostname to an IP address of the server and the port number on which the website or resource is located (somewhat similar to `localhost:8000`).
-- A port number is essential to identify exactly which website you want to land up on since a single server could be serving up different services on different ports
+- Whenever we type an address into our browser, it translates the hostname to an IP for a server and the port number on which the website or resource is located (somewhat similar to `localhost:8000`). A port number is essential to identify exactly which website you want to land up on since a single server could be serving up different services on different ports.
 - The mapping of hostnames with their IP addresses is maintained on DNS (Domain Name Service) servers by ISPs (Internet Service Providers)
 
 #### `host` and `nslookup`
@@ -207,8 +205,9 @@ When we run a server on our computer it gets the hostname `localhost` with the I
 
 - An IP address uniquely identifies a computer on a network. A **port** uniquely identifies a program on that computer.
 - We don't need to mention the port number when visiting a website from our browser, because the browser can automatically interpret which port to send the request to based on the URL scheme.
-    - `http` uses port number `80` and `https` uses port number `443` by default.
-- When initiating a server locally, usually port number 8000 is used. `http://localhost:80` won't work since operating systems only allow the administrator / root account to use port numbers below `1024`.
+- When initiating a server locally, usually port number 8000 is used. Something like `http://localhost:80` won't work since operating systems only allow the administrator / root account to use port numbers below `1024`.
+
+*`http` uses port number `80` and `https` uses port number `443` by default.*
 
 ---
 #### Helpful Links
