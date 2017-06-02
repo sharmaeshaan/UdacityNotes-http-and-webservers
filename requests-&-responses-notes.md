@@ -315,7 +315,7 @@ The document has moved
 </BODY></HTML>
 ```
 
-##### Status line
+##### *Status line*
 
 `HTTP/1.1 302 Found`
 
@@ -332,7 +332,7 @@ Here's what status codes in a server response broadly mean:
 | 4xx         | Client error |
 | 5xx         | Server error |
 
-##### Headers
+##### *Headers*
 
 ```
 Cache-Control: private
@@ -349,7 +349,7 @@ Date: Thu, 01 Jun 2017 19:10:15 GMT
 - The number of keywords contained in a response header varies from server to server depending on how they're configured.
 - Header information isn't usually shown to the user when browsing websites -- it is basically like a strategic conversation that is happening between the client and the server with each request and response so that we're able to access our webpages and resources seamlessly.
 
-##### Response Body
+##### *Response Body*
 
 ```
 <HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
@@ -368,7 +368,7 @@ The document has moved
 
  We can manually write a response and send it to a client using `ncat`, a tool in the `nmap` network analysis program. For example:
 
-#### Sending a Message
+##### *Sending a Message*
 
 Open terminal and start listening at port `8000`
 
@@ -395,7 +395,7 @@ Check your browser window for the plain text message. Notice that only the respo
 
 *In some systems, you might have to press `Ctrl+C`  to terminate the process for the message to appear*
 
-#### Sending a Redirect
+##### *Sending a Redirect*
 
 Open terminal and start listening at port `8000`
 
