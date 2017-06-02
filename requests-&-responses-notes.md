@@ -3,6 +3,8 @@
 ## Lesson: Requests and Responses
 **Instructor: Karl Krueger**
 
+
+
 ### Module 1: Introduction
 
 #### HTTP
@@ -43,6 +45,8 @@ Since a connection is established, typing anything in each terminal will lead to
 - https://nmap.org/
 - https://en.wikipedia.org/wiki/Transmission_Control_Protocol
 ---
+
+
 
 ### Module 2: Your First Web Server
 
@@ -105,17 +109,17 @@ For example, instead of `8000` setting the port to `8464` with the statement `py
 - Each component has it's own syntax
 - Similar to "flags" in a Bash shell statement, many components of in a URL are optional, which is why URLs of different websites differ from each other.
 - Typical URL example:
-https://en.wikipedia.org/wiki/Prague
-`https` is the scheme `en.wikipedia.org` is the hostname of the server and `wiki/Prague` is the directory path.
+  https://en.wikipedia.org/wiki/Prague
+  `https` is the scheme `en.wikipedia.org` is the hostname of the server and `wiki/Prague` is the directory path.
 
-#### scheme
+#### Scheme
 - A scheme is the is the protocol which tells the cilent i.e. the brower what protocol to follow when accessing the resource at the given url
 - `https` and `http` are the most used schemes when accessing webpages... `file` is used when accessing resources on our own computer through the browser... `mailto` for links to email addresses... Google Chrome uses 'chrome' when accessing it's internal pages like settings and extensions... The scheme for bitcoin transactions is `bitcoin`...
 - There are hundreds of URI schemes the list of which can be found at https://www.iana.org/assignments/uri-schemes/uri-schemes.xhtml
 
 - *The primary difference between `http` and `https` is that of encryption. All requests and responses happening within a `https` protocol are encrypted while those within `http` are not*
 
-#### hostname
+#### Hostname
 - A hostname is a unique identifier for which tells the client which server to connect to. For example `localhost` or `www.wikipedia.com'
 - A `:` always comes after the scheme
 - A `//` always comes before a hostname and a single '/' immediately after it to indicate the beginning of a path
@@ -123,12 +127,12 @@ https://en.wikipedia.org/wiki/Prague
 - Since the `mailto` scheme only requires an email address and not a hostname, it can be written as `mailto:myname@mailservice.com`
 - It is essential to mention schemes while typing URLs in HTML. For example, HTML will not identify `www.facebook.com` but `https://www.facebook.com` will give you a working link.
 
-#### path
+#### Path
 - The path is what identifies a specific resource on a server
 - The syntax of the path varies depending on the host and the requested resource
 - For example:
 - the URL `https://upload.wikimedia.org/wikipedia/commons/d/d4/N.Tesla.JPG` with path `wikipedia/commons/d/d4/N.Tesla.JPG` takes us to an image file `N.Tesla.JPG`
-which means that the server has a file with that name.
+  which means that the server has a file with that name.
 - but the URL `https://www.google.com/#q=cats` with the path `#q=cats` takes us to a webpage which shows us a list of Google search results -- which means there is no file named `#q=cats` on the server.
 - So the path of a URL does not necessarily indicate the directory structure of a server or a the exact location of a praticular file -- it could also indicate a command/query which a program on the server can interpret in a particular way to show the user relevant results. In the case of a Google search, the server is most likely using the path `#q=cats` to query a database, extract links related to cats from it, insert them in a pretty webpage and send it back to the client.
 
@@ -143,10 +147,6 @@ A URL reference is indicated by a `#` called a "fragment". URLs with fragments i
 - https://support.google.com/webmasters/answer/70897?hl=en#3
 
 ---
-
-
-
-
 
 
 
@@ -214,6 +214,7 @@ When we run a server on our computer it gets the hostname `localhost` with the I
 ---
 
 
+
 ### Module 5: HTTP GET Requests
 
 There are different kinds of HTTP requests. Every request has a "method" or "verb" depending on what the client has requested from the server. The different types of HTTP methods are:
@@ -242,7 +243,7 @@ The above statement is a typical `GET` request made by a client. It's can be bro
 - `/readme.md`: Path of the requested resource, which in this case is a readme file
 - `HTTP/1.1`: The protocol in use for the request and response. `1.1` is the version number of the protocol.
 
-#### Manually Writing `GET` Request
+#### Manually Sending `GET` Request
 
 The above example illustrated how a client automatically makes `GET` requests for us while we click and open resources. We can also write HTTP requests and get resources from a server manually using `ncat`, a tool in the `nmap` network analysis program.
 
@@ -279,12 +280,142 @@ Course notes jotted down while taking the ["HTTP & Web Servers"](https://www.uda
 
 
 
-
-
-
 ### Module 6: HTTP Responses
 
+An HTTP response is data (some HTML, a text file, an image etc.) which a server sends back to fulfill a client's request, along with critical information related to that data i.e. *metadata*.
+
+#### Example Response
+
+Open terminal, connect to `www.google.com` at port `80` using `ncat` and send a `GET` request
+```
+ncat www.google.com 80
+GET / HTTP/1.1
+Host: www.google.com
+```
+Response
+```
+HTTP/1.1 302 Found
+Cache-Control: private
+Content-Type: text/html; charset=UTF-8
+Referrer-Policy: no-referrer
+Location: http://www.google.co.in/?gfe_rd=cr&ei=l2YwWd3tHMWGoAO6ubuwBQ
+Content-Length: 261
+Date: Thu, 01 Jun 2017 19:10:15 GMT
+
+<HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
+<TITLE>302 Moved</TITLE></HEAD><BODY>
+<H1>302 Moved</H1>
+The document has moved
+<A HREF="http://www.google.co.in/">here</A>.
+</BODY></HTML>
+```
+
+##### Status line
+
+`HTTP/1.1 302 Found`
+
+- This line tells us the protocol in use for the current request-response and whether the server has been able to successfully find the resource we asked for, or couldn't, or could but ran into some issues.
+- The server appraises us about the status of our request by the use of "status codes" where each code has a specific meaning. In this case, `302 Found` means that the page requested by us has been found but is currently residing at a different URL, which the browser will automatically redirect to. 
+
+Here's what status codes in a server response broadly mean:
+
+| Status Code | Meaning      |
+| ----------- | ------------ |
+| 1xx         | In-progress  |
+| 2xx         | Success!     |
+| 3xx         | Redirection  |
+| 4xx         | Client error |
+| 5xx         | Server error |
+
+##### Headers
+
+```
+Cache-Control: private
+Content-Type: text/html; charset=UTF-8
+Referrer-Policy: no-referrer
+Location: http://www.google.co.in/?gfe_rd=cr&ei=l2YwWd3tHMWGoAO6ubuwBQ
+Content-Length: 261
+Date: Thu, 01 Jun 2017 19:10:15 GMT
+```
+
+- Headers contain the metadata of the servers response aka critical information about the data sent back to the client. 
+- This information has keywords like `Content-type` or `Date` and a accompanying values like `text/html` or `Thu, 01 Jun 2017 19:10:15 GMT` 
+- The server generates a value of each header keyword according to the nature of each request and response. Certain values can affect the way the client handles the response. 
+- The number of keywords contained in a response header varies from server to server depending on how they're configured. 
+- Header information isn't usually shown to the user when browsing websites -- it is basically like a strategic conversation that is happening between the client and the server with each request and response so that we're able to access our webpages and resources seamlessly. 
+
+##### Response Body
+
+```
+<HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
+<TITLE>302 Moved</TITLE></HEAD><BODY>
+<H1>302 Moved</H1>
+The document has moved
+<A HREF="http://www.google.co.in/">here</A>.
+</BODY></HTML>
+```
+
+- The response body contains the actual resource that the client requested. 
+- It begins after a blank line beneath the header.
+- If the client requested the homepage of a website, the entire HTML of the webpage will be contained within the response body, which in our case is the HTML for `www.google.com`
+
+#### Manually Sending Responses
+
+ We can manually write a response and send it to a client using `ncat`, a tool in the `nmap` network analysis program. For example:
+
+#### Sending a Message
+
+Open terminal and start listening at port `8000`
+
+```
+ncat -l 8000
+```
+
+Open browser and go to `localhost:8000`
+
+```
+http://localhost:8000
+```
+
+In the open terminal, send the client a response with a plain text message and press `Enter` twice
+
+```
+HTTP/1.1 200 OK
+Content-type: text/plain
+
+Hey client, how're you feeling today?
+```
+
+Check your browser window for the plain text message. Notice that only the response body appears and none of the header information. 
+
+*In some systems, you might have to press `Ctrl+C`  to terminate the process for the message to appear*
+
+#### Sending a Redirect
+
+Open terminal and start listening at port `8000`
+
+```
+ncat -l 8000
+```
+
+Open browser and go to `localhost:8000`
+
+```
+http://localhost:8000
+```
+
+In the open terminal, send the client a response with a plain text message and press `Enter` twice
+
+```
+HTTP/1.1 307 Temporary Redirect
+Location: https://www.facebook.com
+```
+
+Refresh/reload your browser window. Notice that `localhost:8000` has now been re-directed to a different website, in this case Facebook.
 
 ---
 #### Helpful Links
+- https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+- https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#nginx
+
 ---
