@@ -100,45 +100,51 @@ For example, instead of `8000` setting the port to `8464` with the statement `py
 
 ### Module 3: Parts of a URL
 
-- Web address is called a URI - Uniform Resource Identifier
-- Every element which can be individually located on the web has a URI -- a unique string of text, numbers and special characters, which is called a URL -- Uniform Resource Locator.
-- As the name says, it tells the browser exactly which resource to go to -- for example, a wikipedia page, a youtube video, a facebook profile etc.
+- The address of any resource on a network is called a URI - Uniform Resource Identifier
+- The URI, a unique string made up of text, numbers and special characters, when prefixed with a "scheme" like `HTTP` or `FTP` or `HTTPS`, is called a URL -- Uniform Resource Locator.
+- As the name says, a URL tells the server exactly which resource fetch  -- for example, a wikipedia page, a youtube video, a facebook profile etc.
 
-
-- URL's are typically made up of several components
-- Each component has it's own syntax
+- URL's are typically made up of several components, with each component having it's own syntax.
 - Similar to "flags" in a Bash shell statement, many components of in a URL are optional, which is why URLs of different websites differ from each other.
-- Typical URL example:
-  https://en.wikipedia.org/wiki/Prague
-  `https` is the scheme `en.wikipedia.org` is the hostname of the server and `wiki/Prague` is the directory path.
+- A simple URL looks like the following:
+    `https://en.wikipedia.org/wiki/Prague`
+    `https` is the scheme `en.wikipedia.org` is the hostname of the server and `wiki/Prague` is the directory path.
 
 #### Scheme
-- A scheme is the is the protocol which tells the cilent i.e. the brower what protocol to follow when accessing the resource at the given url
-- `https` and `http` are the most used schemes when accessing webpages... `file` is used when accessing resources on our own computer through the browser... `mailto` for links to email addresses... Google Chrome uses 'chrome' when accessing it's internal pages like settings and extensions... The scheme for bitcoin transactions is `bitcoin`...
-- There are hundreds of URI schemes the list of which can be found at https://www.iana.org/assignments/uri-schemes/uri-schemes.xhtml
+- The "scheme" specifies to the client and server what protocol to follow during the request and response.
 
-- *The primary difference between `http` and `https` is that of encryption. All requests and responses happening within a `https` protocol are encrypted while those within `http` are not*
+##### *Common Scheme Examples*
+- `https` and `http` are the most used schemes when accessing webpages.
+- `file` is used when accessing resources on our own computer through the browser.
+- `mailto` for links to email addresses.
+- `chrome` is used by Google Chrome for accessing internal pages like settings and extensions.
+- `bitcoin` is used by the cryptocurrency Bitcoin it's transactions.
+
+    and many more...
+
+
+*The primary difference between `http` and `https` is that of encryption. All requests and responses happening within a `https` protocol are encrypted while those within `http` are not*
 
 #### Hostname
-- A hostname is a unique identifier for which tells the client which server to connect to. For example `localhost` or `www.wikipedia.com'
+- A hostname is a unique identification name for a server. For example `localhost` or `www.google.com` or `www.google.co.uk`.
 - A `:` always comes after the scheme
 - A `//` always comes before a hostname and a single '/' immediately after it to indicate the beginning of a path
 - If we don't enter a path after the hostname, the server will show us the `root` or the entry point of it's resources. On the web, this will typically be a website's homepage. On a local file system, this will be the main directory in which the server has been initiated.
-- Since the `mailto` scheme only requires an email address and not a hostname, it can be written as `mailto:myname@mailservice.com`
 - It is essential to mention schemes while typing URLs in HTML. For example, HTML will not identify `www.facebook.com` but `https://www.facebook.com` will give you a working link.
 
+*Since the `mailto` scheme only requires an email address and not a hostname, it can be written as `mailto:myname@mailservice.com`*
+
 #### Path
-- The path is what identifies a specific resource on a server
-- The syntax of the path varies depending on the host and the requested resource
-- For example:
-- the URL `https://upload.wikimedia.org/wikipedia/commons/d/d4/N.Tesla.JPG` with path `wikipedia/commons/d/d4/N.Tesla.JPG` takes us to an image file `N.Tesla.JPG`
-  which means that the server has a file with that name.
-- but the URL `https://www.google.com/#q=cats` with the path `#q=cats` takes us to a webpage which shows us a list of Google search results -- which means there is no file named `#q=cats` on the server.
-- So the path of a URL does not necessarily indicate the directory structure of a server or a the exact location of a praticular file -- it could also indicate a command/query which a program on the server can interpret in a particular way to show the user relevant results. In the case of a Google search, the server is most likely using the path `#q=cats` to query a database, extract links related to cats from it, insert them in a pretty webpage and send it back to the client.
+- The path identifies a specific resource on a server. It can be a simple directory path to identy a partifular file in a maze of folders or an input for a query which the server takes to search a database.
+- The syntax of the path varies depending on the host and the requested resource. For example:
+    - The URL `https://upload.wikimedia.org/wikipedia/commons/d/d4/N.Tesla.JPG` with path `wikipedia/commons/d/d4/N.Tesla.JPG` takes us to an image file `N.Tesla.JPG, which means that the server has a file with that name.
+    - But the URL `https://www.google.com/#q=cats` with the path `#q=cats` takes us to a webpage which shows us a list of Google search results, which means there is most likely no specific file named `#q=cats` on the server.
+- So the path of a URL does not necessarily indicate the directory structure of a server or a the exact location of a praticular file -- it could also indicate a command/query which a program on the server can interpret in a particular way to show the user relevant results. In the case of a Google search, the server is most likely using the path `#q=cats` to query a database, extract links related to cats from it, insert them into pretty HTML page  and send it back to the client.
 
 ##### URL reference
 
-A URL reference is indicated by a `#` called a "fragment". URLs with fragments in them don't lead to a new resource on the server but rather a different element on the same webpage. For example, the URL `https://en.wikipedia.org/wiki/Prague#Geography` with the fragment `#Geography` will lead us to the section on the page with the HTML `<id = "Geography">`
+- A URL reference is indicated by a `#` called a "fragment".
+- URLs with fragments in them don't lead to a new or different "resource" on the server but rather a different "element on the same resource". For example, the URL `https://en.wikipedia.org/wiki/Prague#Geography` with the fragment `#Geography` will lead us to the section on the page with the HTML `<id = "Geography">`
 
 ---
 #### Helpful Links
@@ -315,7 +321,7 @@ The document has moved
 `HTTP/1.1 302 Found`
 
 - This line tells us the protocol in use for the current request-response and whether the server has been able to successfully find the resource we asked for, or couldn't, or could but ran into some issues.
-- The server appraises us about the status of our request by the use of "status codes" where each code has a specific meaning. In this case, `302 Found` means that the page requested by us has been found but is currently residing at a different URL, which the browser will automatically redirect to. 
+- The server appraises us about the status of our request by the use of "status codes" where each code has a specific meaning. In this case, `302 Found` means that the page requested by us has been found but is currently residing at a different URL, which the browser will automatically redirect to.
 
 Here's what status codes in a server response broadly mean:
 
@@ -338,11 +344,11 @@ Content-Length: 261
 Date: Thu, 01 Jun 2017 19:10:15 GMT
 ```
 
-- Headers contain the metadata of the servers response aka critical information about the data sent back to the client. 
-- This information has keywords like `Content-type` or `Date` and a accompanying values like `text/html` or `Thu, 01 Jun 2017 19:10:15 GMT` 
-- The server generates a value of each header keyword according to the nature of each request and response. Certain values can affect the way the client handles the response. 
-- The number of keywords contained in a response header varies from server to server depending on how they're configured. 
-- Header information isn't usually shown to the user when browsing websites -- it is basically like a strategic conversation that is happening between the client and the server with each request and response so that we're able to access our webpages and resources seamlessly. 
+- Headers contain the metadata of the servers response aka critical information about the data sent back to the client.
+- This information has keywords like `Content-type` or `Date` and a accompanying values like `text/html` or `Thu, 01 Jun 2017 19:10:15 GMT`
+- The server generates a value of each header keyword according to the nature of each request and response. Certain values can affect the way the client handles the response.
+- The number of keywords contained in a response header varies from server to server depending on how they're configured.
+- Header information isn't usually shown to the user when browsing websites -- it is basically like a strategic conversation that is happening between the client and the server with each request and response so that we're able to access our webpages and resources seamlessly.
 
 ##### Response Body
 
@@ -355,7 +361,7 @@ The document has moved
 </BODY></HTML>
 ```
 
-- The response body contains the actual resource that the client requested. 
+- The response body contains the actual resource that the client requested.
 - It begins after a blank line beneath the header.
 - If the client requested the homepage of a website, the entire HTML of the webpage will be contained within the response body, which in our case is the HTML for `www.google.com`
 
@@ -386,7 +392,7 @@ Content-type: text/plain
 Hey client, how're you feeling today?
 ```
 
-Check your browser window for the plain text message. Notice that only the response body appears and none of the header information. 
+Check your browser window for the plain text message. Notice that only the response body appears and none of the header information.
 
 *In some systems, you might have to press `Ctrl+C`  to terminate the process for the message to appear*
 
